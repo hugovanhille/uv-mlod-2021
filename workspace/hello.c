@@ -48,18 +48,26 @@ TypeEntier factorielle(int N){
 
 int main(void) {
 
-    float prix=0;
+    //float prix=0;
+
+    //Exercice 1
     //prix=prix_billet(5,10);
     //printf("Le prix du billet est %f € \n",prix);
+    
+    //Exercice 2
     //affichage_des(6);
-    //nombres_parfaits(496);
-    TypeEntier res=0;
+
+    int N=0;
+    printf("entrer un entier N pour lequel tester les nombres parfait:\n");
+    scanf("%d",&N);
+    nombres_parfaits(N);
+    //TypeEntier res=0;
     //res=factorielle(8);
     //printf("8 factorielle =%d",res);
-    for(int i=1;i<=15;i++){
+    /*for(int i=1;i<=15;i++){
         res=factorielle(i);
         printf("%d! =%d\n",i,res);
-    }
+    }*/
 
     return 0;
 }
