@@ -57,13 +57,13 @@ int main(void) {
     //Exercice 2
     //affichage_des(6);
 
-    int N=0;
+    /*int N=0;
     printf("entrer un entier N pour lequel tester les nombres parfait:\n");
     scanf("%d",&N);
-    nombres_parfaits(N);
-    //TypeEntier res=0;
-    //res=factorielle(8);
-    //printf("8 factorielle =%d",res);
+    nombres_parfaits(N);*/
+    TypeEntier res=0;
+    res=factorielle(8);
+    printf("8 factorielle =%d",res);
     /*for(int i=1;i<=15;i++){
         res=factorielle(i);
         printf("%d! =%d\n",i,res);
