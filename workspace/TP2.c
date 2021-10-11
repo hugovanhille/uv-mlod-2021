@@ -55,7 +55,7 @@ void affiche_matrice(int64_t matrice[5][5]){
         }
 }
     enum Mois{
-        janvier,
+        janvier=1,
         fevrier,
         mars,
         avril,
@@ -68,6 +68,32 @@ void affiche_matrice(int64_t matrice[5][5]){
         novembre,
         decembre
     };
+    void affiche_mois(enum Mois m){
+        if (m==1)
+            printf("Janvier");
+        else if (m==2)
+            printf("Février");
+        else if (m==3)
+            printf("Mars");
+        else if (m==4)
+            printf("Avril");
+        else if (m==5)
+            printf("Mai");
+        else if (m==6)
+            printf("Juin");
+        else if (m==7)
+            printf("Juillet");
+        else if (m==8)
+            printf("Aout");
+        else if (m==9)
+            printf("Septembre");
+        else if (m==10)
+            printf("Octobre");
+        else if (m==11)
+            printf("Novembre");
+        else if (m==12)
+            printf("Décembre");
+    }
 
     struct date {
         int jour;
@@ -75,13 +101,13 @@ void affiche_matrice(int64_t matrice[5][5]){
         int annee;
     };
 
-void initialiseDate (struct date *d ){
+void initialiseDate (struct date*d){
     int a ,c;
-    char b;
+    enum Mois b;
     printf("entrer une année:\n");
     scanf("%d",&a);
     printf("entrer un mois:\n");
-    scanf("%s",&b);
+    scanf("%d",(int*)&b);
     printf("entrer un jour a:\n");
     scanf("%d",&c);
     (*d).annee=a;
@@ -89,8 +115,9 @@ void initialiseDate (struct date *d ){
     (*d).jour=c;
 
 }
-void afficheDate(struct date *d){
-    printf("Le %d %s",(*d).jour,(*d).mois);
+void afficheDate(struct date*d){
+    printf("Le %d ",(*d).jour);
+    affiche_mois((*d).mois);
     printf(" %d\n",(*d).annee);
 
 }
@@ -100,6 +127,13 @@ struct date creerDateParCopie(){
     initialiseDate(&d);
     return d;
 }
+
+/*struct date* Date newDate(){
+    struct date* Date;
+    Date=malloc(sizeof(*Date));
+    initialiseDate(Date);
+    return Date;
+}*/
 
 
 int main(void) {
@@ -136,10 +170,14 @@ int main(void) {
 
 
     struct date d;
-    //initialiseDate(&d);
-    d=creerDateParCopie(); 
+    initialiseDate(&d);
+
+    //d=creerDateParCopie(); 
     afficheDate(&d);
 
-
+    /*struct date *date;
+    date = newDate();
+    afficheDate(date);
+    free(date);*/
     return 0;
 }
