@@ -8,7 +8,7 @@
 bool estVide(Liste l) {
 	return l == NULL;
 }
-/*
+
 // créer une liste d'un seul élément contenant la valeur v
 Liste creer(Element v){
 	Liste l;
@@ -47,7 +47,7 @@ void afficheListe_r(Liste l) {
 		afficheListe_r(l->suiv);
 	afficheElement(l->val);
 }
-
+/*
 void detruireElement(Element e) {
 	
 }

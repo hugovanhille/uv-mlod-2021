@@ -84,7 +84,7 @@ void readWinners(){
 		(winners[0]+i-1)->nom = scanLine();
 		(winners[0]+i-1)->description = scanLine();
 	}
-	printWinners(winners);
+printWinners(winners);
 }
 
 int main(int argc, char *argv[]){

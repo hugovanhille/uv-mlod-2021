@@ -15,7 +15,7 @@ typedef Cellule* Liste;
 
 // retourne vrai si l est vide et faux sinon
 bool estVide(Liste l);
-/*
+
 // créer une liste d'un seul élément contenant la valeur v
 Liste creer(Element v);
 
@@ -33,7 +33,7 @@ void afficheListe_i(Liste l);
 
 // version recursive
 void afficheListe_r(Liste l);
-
+/*
 void detruireElement(Element e);
 
 // Détruit tous les éléments de la liste l
