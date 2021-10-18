@@ -64,6 +64,16 @@ void printOneWinner(winner *winner){
 void printWinners(winner *winners[]){
 		for (int i=1;i<=50;i++)
 			printOneWinner(winners[0]+i-1);
+		free (winners);
+}
+
+
+void infosAnnee (winner *winners[],int annee){
+	for(int i=1;i<=50;i++){
+		if ((winners[0]+i-1)->annee ==annee)
+			printOneWinner(winners[0]+i-1);
+	}
+	free (winners);
 }
 
 void readWinners(){
@@ -76,11 +86,11 @@ void readWinners(){
 	}
 	printWinners(winners);
 }
-int main(void){
 
+int main(int argc, char *argv[]){
 	int nbGagnants = scanLineAsInt();
 	printf("nbGagnants = %i\n",nbGagnants);
 	readWinners();
-
+	//int annee=(int)argv[1];
 	return EXIT_SUCCESS;
 }
