@@ -84,9 +84,9 @@ int main (void){
     readMatrixArray(tabMatrice,nbMatrices);
     printMatrixArray(tabMatrice,nbMatrices);
 
-    /*//Question 5 (problème dans la fonction transposee)
-    matrice *tabMatrice2[nbMatrices];
-    &tabMatrice2=rotate9ccw(tabMatrice, nbMatrices);
-    */
+    //Question 5 (problème dans la fonction transposee)
+    /*matrice *tabMatrice2[nbMatrices];
+    &tabMatrice2=rotate9ccw(tabMatrice, nbMatrices);*/
+    
     free (*tabMatrice);
 }

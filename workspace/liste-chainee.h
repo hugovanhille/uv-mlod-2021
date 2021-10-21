@@ -33,8 +33,8 @@ void afficheListe_i(Liste l);
 
 // version recursive
 void afficheListe_r(Liste l);
-/*
-void detruireElement(Element e);
+
+//void detruireElement(Element e);
 
 // Détruit tous les éléments de la liste l
 // version itérative
@@ -56,7 +56,7 @@ Liste cherche_i(Element v,Liste l);
 
 // version récursive
 Liste cherche_r(Element v,Liste l);
-
+/*
 // Retourne la liste modifiée dans la laquelle le premier élément ayant la valeur v a été supprimé
 // ne fait rien si aucun élément possède cette valeur
 // version itérative
