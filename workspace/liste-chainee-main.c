@@ -53,7 +53,7 @@ int main(void){
 		afficheElement(p->val);
 		printf("\n");
 	}
-/*
+
 	printf("retirePremier_i(1)   : ");
 	l = retirePremier_i(1,l);
 	afficheListe_r(l);
@@ -77,7 +77,8 @@ int main(void){
 	printf("retirePremier_r(99)  : ");
 	l = retirePremier_r(99,l);
 	afficheListe_r(l);
-*/
+
+
 	detruire_r(l);
 
 	return EXIT_SUCCESS;

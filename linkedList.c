@@ -1,8 +1,6 @@
-#include "liste-chainee.h"
+#include "linkedList.h"
 #include <stdlib.h>
 #include <stdio.h>
-
-#define TODO NULL;
 
 // retourne vrai si l est vide et faux sinon
 bool estVide(Liste l) {
@@ -177,7 +175,3 @@ void afficheEnvers_r(Liste l) {
 		afficheElement(l->val);
 	}
 }
-
-
-
-
