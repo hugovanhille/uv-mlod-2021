@@ -4,6 +4,8 @@
 #include "liste-chainee.h"
 #include <stdlib.h>
 #include <stdio.h>
+#include <linkedList.h>
+#include <string.h>
 
 int main(void){
 	Liste l,p;
