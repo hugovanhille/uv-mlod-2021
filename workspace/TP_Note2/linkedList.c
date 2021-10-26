@@ -1,8 +1,6 @@
-#include "liste-chainee.h"
+#include "linkedList.h"
 #include <stdlib.h>
 #include <stdio.h>
-
-#define TODO NULL;
 
 // retourne vrai si l est vide et faux sinon
 bool estVide(Liste l) {
@@ -26,9 +24,6 @@ Liste ajoutTete(Element v, Liste l) {
 }
 
 
-void afficheElement(Element e) {
-	printf("%i ",e);
-}
 
 // affiche tous les éléments de la liste l
 // Attention, cette fonction doit être indépendante du type des éléments de la liste
@@ -36,25 +31,22 @@ void afficheElement(Element e) {
 // Attention la liste peut être vide !
 // version itérative
 void afficheListe_i(Liste l) {
-		while(!estVide(l)){
-			afficheElement(l->val);
-			l=l->suiv;
-		}
-		printf("\n");
+	while(!estVide(l)){
+		afficheElement(l->val);
+		l=l->suiv;
+	}
+	printf("\n");
 }
-
 // version recursive
 void afficheListe_r(Liste l) {
 	if(!estVide(l)){
 		afficheElement(l->val);
 		afficheListe_r(l->suiv);
 	}
-	printf("\n");
+	else 
+		printf("\n");
 }
 
-void detruireElement(Element e) {
-	
-}
 
 // Détruit tous les éléments de la liste l
 // version itérative
@@ -80,10 +72,12 @@ void detruire_r(Liste l) {
 // retourne la liste dans laquelle l'élément v a été ajouté en fin
 // version itérative
 Liste ajoutFin_i(Element v, Liste l) {
-	while (!estVide(l->suiv))
-		l=l->suiv;
-	Liste new=creer(v);
-	l->suiv=new;
+	Liste new=l;
+	if(estVide(l))
+		return creer(v);
+	while(!estVide(new->suiv))
+		new=new->suiv;
+	new->suiv=creer(v);
 	return l;
 }
 
@@ -98,10 +92,6 @@ Liste ajoutFin_r(Element v, Liste l) {
 	return l;
 }
 
-// compare deux elements
-bool equalsElement(Element e1, Element e2){
-	return e1 == e2;
-}
 
 // Retourne un pointeur sur l'élément de la liste l contenant la valeur v ou NULL
 // version itérative
@@ -176,8 +166,5 @@ void afficheEnvers_r(Liste l) {
 		afficheEnvers_r(l->suiv);
 		afficheElement(l->val);
 	}
+
 }
-
-
-
-

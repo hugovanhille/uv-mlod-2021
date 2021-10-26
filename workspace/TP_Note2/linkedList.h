@@ -1,6 +1,7 @@
 #pragma once
 #include <stdbool.h>
 
+
 typedef void* Element;
 
 

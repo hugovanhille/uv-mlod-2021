@@ -1,0 +1,2 @@
+estVide(l) = TRUE
+lecture du fichierboucle
