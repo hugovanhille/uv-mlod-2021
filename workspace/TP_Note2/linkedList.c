@@ -11,7 +11,7 @@ bool estVide(Liste l) {
 Liste creer(Element v){
 	Liste l=malloc(sizeof(Cellule));
 	l->val=v;
-	//l->suiv=NULL;
+	l->suiv=NULL;
 	return l;
 }
 
@@ -51,12 +51,12 @@ void afficheListe_r(Liste l) {
 // Détruit tous les éléments de la liste l
 // version itérative
 void detruire_i(Liste l) {
-	Liste lSuivant=l;
-	while(!estVide(lSuivant)){
-		l=lSuivant;
-		lSuivant=l->suiv;
+	Liste next;
+	while(!estVide(l)){
+		next=l->suiv;
 		detruireElement(l->val);
 		free(l);
+		l=next;
 	}
 }
 

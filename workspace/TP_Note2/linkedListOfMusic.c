@@ -6,22 +6,22 @@
 
 void afficheElement(Element e) {
 	Music *m = (Music*) e;
-	printf("%s ",m->name);
-	printf("%s ",m->artist);
-	printf("%s ",m->album);
-	printf("%s ",m->genre);
-	printf("%i ",m->discNumber);
-	printf("%i ",m->trackNumber);
-	printf("%i ",m->year);
+	printf("%s,",m->name);
+	printf("%s,",m->artist);
+	printf("%s,",m->album);
+	printf("%s,",m->genre);
+	if(m->discNumber==0)
+		printf(",");
+	else
+		printf("%i,",m->discNumber);
+	printf("%i,",m->trackNumber);
+	printf("%i",m->year);
 	printf("\n");
 }
 
 void detruireElement(Element e) {
-	Music *m = (Music*) e;
-    free(m->name);
-    free(m->artist);
-    free(m->album);
-    free(m->genre);
+	/*Music *m = (Music*) e;
+    free(m);*/
     free(e);
 }
 
@@ -45,7 +45,7 @@ bool equalsElement(Element e1, Element e2){
 	return res;
 }
 
-Music* ReadLine(FILE* fichier, char* ligne){
+Music* ReadLine( char* ligne){
     
     Music* m =malloc(sizeof(Music));
 
@@ -58,7 +58,6 @@ Music* ReadLine(FILE* fichier, char* ligne){
     m->discNumber = atoi( strsep(&line,","));
     m->trackNumber = atoi( strsep(&line,","));
     m->year = atoi( strsep(&line,","));
-
 	return m;
 }
 
@@ -67,12 +66,40 @@ Liste readFile(FILE *fichier){
 	Liste l = NULL;
 	char *ligne=malloc(sizeof(char)*255);
     fgets(ligne,255,fichier);
-    int i=0;
+	char *firstLine=strdup(ligne);
+	printf("%s",firstLine);
+
     
 	while(fgets(ligne,255,fichier)!=NULL){
-        l=ajoutFin_i(ReadLine(fichier,ligne),l);
-		fgets(ligne,255,fichier);
-        i++;
+        l=ajoutFin_i(ReadLine(ligne),l);
 	}
+    free(ligne);
+    free(firstLine);
+
     return l;
 }
+
+Liste triABulles(Liste l){
+	if(estVide(l)){
+        return NULL;
+    }
+    Liste prec  = l;
+    Liste next = NULL;
+    while(!estVide(prec)){
+        next = prec->suiv;
+        while(!estVide(next)){
+            if( ((Music*)(next->val))->year < ((Music*)(prec->val))->year ){
+                void *p;
+                p = next->val;
+                next->val = prec->val;
+                prec->val = p;
+            }
+            next = next->suiv;
+        }
+        prec = prec->suiv;
+    }
+    return l;
+
+}
+
+

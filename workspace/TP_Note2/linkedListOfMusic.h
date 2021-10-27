@@ -17,6 +17,8 @@ struct Music{
 typedef struct Music Music;
 
 
-Music* ReadLine( FILE* fichier, char *ligne);
+Music* ReadLine( char *ligne);
 
 Liste readFile(FILE *fichier);
+
+Liste triABulles(Liste l);
