@@ -20,8 +20,6 @@ void afficheElement(Element e) {
 }
 
 void detruireElement(Element e) {
-	/*Music *m = (Music*) e;
-    free(m);*/
     free(e);
 }
 
@@ -49,8 +47,8 @@ Music* ReadLine( char* ligne){
     
     Music* m =malloc(sizeof(Music));
 
-    char *line=strdup(ligne);
-    
+    char *line, *tofree;
+    tofree=line=strdup(ligne);
     m->name=strsep(&line,",");
 	m->artist=strsep(&line,",");
     m->album=strsep(&line,",");
@@ -58,6 +56,7 @@ Music* ReadLine( char* ligne){
     m->discNumber = atoi( strsep(&line,","));
     m->trackNumber = atoi( strsep(&line,","));
     m->year = atoi( strsep(&line,","));
+    free(tofree);
 	return m;
 }
 
@@ -68,12 +67,10 @@ Liste readFile(FILE *fichier){
     fgets(ligne,255,fichier);
 	char *firstLine=strdup(ligne);
 	printf("%s",firstLine);
-
-    
-	while(fgets(ligne,255,fichier)!=NULL){
+    while(fgets(ligne,255,fichier)!=NULL){
         l=ajoutFin_i(ReadLine(ligne),l);
+        free(ligne);
 	}
-    free(ligne);
     free(firstLine);
 
     return l;
