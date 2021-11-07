@@ -46,7 +46,7 @@ int profondeur(ArbreBinaire a, Element e);
 int hauteur(ArbreBinaire a);
 
 // retourne le pere de elem dans l'arbre a ou NULL s'il n'existe pas
-//ArbreBinaire pere(ArbreBinaire a, Element elem);
+ArbreBinaire pere(ArbreBinaire a, Element elem);
 
 void afficheRGD_r(ArbreBinaire a);
 void afficheGRD_r(ArbreBinaire a);
@@ -65,7 +65,7 @@ ArbreBinaire max(ArbreBinaire a);
 ArbreBinaire recherche_r(ArbreBinaire a, Element elem);
 
 // suppime x de a
-//ArbreBinaire supprimer_r(ArbreBinaire a,Element x);
+ArbreBinaire supprimer_r(ArbreBinaire a,Element x);
 
 void detruire_r(ArbreBinaire a);
 

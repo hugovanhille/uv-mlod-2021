@@ -77,7 +77,7 @@ int profondeur(ArbreBinaire a, Element e){
 	if(estVide(a))
 		return -1;
 	if(e==a->val)
-		return 1;
+		return 0;
 	else
 	{
 		if(e<a->val){
@@ -112,19 +112,25 @@ int hauteur(ArbreBinaire a){
 }
 
 // retourne le pere de elem dans l'arbre a ou NULL s'il n'existe pas
-/*ArbreBinaire pere(ArbreBinaire a, Element elem){
+ArbreBinaire pere(ArbreBinaire a, Element elem){
 	if (estVide(a))
 		return NULL;
 	else
 	{
-		if(e<a->val)
-			if(a->val)
-			return pere(a->filsGauche,e);
-		else if(e>a->val)
-			return pere(a->filsDroit,e);
+		if(elem < a->val && !estVide(a->filsGauche)){
+			if(a->filsGauche->val==elem)
+				return a;
+			return pere(a->filsGauche,elem);
+		}
+		else if(elem > a->val && !estVide(a->filsDroit)){
+			if(a->filsDroit->val==elem)
+				return a;
+			return pere(a->filsDroit,elem);
+		}
 	
 	}
-}*/
+	return NULL;
+}
 
 
 void afficheRGD_r(ArbreBinaire a){
@@ -181,14 +187,40 @@ ArbreBinaire recherche_r(ArbreBinaire a, Element elem){
 		return recherche_r(a->filsDroit,elem);
 }
 
+void detruireElement(Element e) {
+}
 
 // suppime x de a
-/*ArbreBinaire supprimer_r(ArbreBinaire a,Element x)
-{
+ArbreBinaire supprimer_r(ArbreBinaire a,Element x){
+	if(estVide(a))
+		return a;
 
-	return NULL;
+	if(x < a->val)
+		a->filsGauche=supprimer_r(a->filsGauche,x);
+	else if (x > a->val)
+		a->filsDroit=supprimer_r(a->filsDroit,x);
+	else {
+		if (estVide(a->filsDroit) && estVide(a->filsGauche)){
+			detruireElement(a->val);
+			return NULL;
+		}
+		else if(estVide(a->filsGauche)){
+			ArbreBinaire b=a->filsDroit;
+			detruireElement(a->val);
+			return b;
+		}
+		else if(estVide(a->filsDroit)){
+			ArbreBinaire b= a->filsGauche;
+			detruireElement(a->val);
+			return b;
+		}
+		ArbreBinaire b=max(a->filsGauche);
+		a->val=b->val;
+		a->filsGauche=supprimer_r(a->filsGauche,b->val);
+	}
+return a;
 }
-*/
+
 void detruire_r(ArbreBinaire a){
 	if(!estVide(a)){
 		detruire_r(a->filsGauche);
